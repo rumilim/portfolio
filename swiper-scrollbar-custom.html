@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Swiper scrollbar loop</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <!-- Link Swiper's CSS -->
+
+    <link rel="stylesheet" href="../resources/css/swiper.min.css" />
+    <link rel="stylesheet" href="../resources/css/common.css" />
+    <script src="../resources/js/jquery-1.11.2.min.js"></script>
+    <script src="../resources/js/swiper.min.js"></script>
+    <!-- Demo styles -->
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .scrollbar-custom {
+        height: 400px;
+      }
+
+      .swiper-container {
+        /* max-width: 1200px; */
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .swiper-container-horizontal > .swiper-pagination-bullets {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        height: 8px;
+        font-size: 0;
+        width: 98%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .swiper-container-horizontal
+        > .swiper-pagination-bullets
+        .swiper-pagination-bullet {
+        margin: 0;
+      }
+
+      .swiper-pagination-bullet {
+        background: rgba(0, 0, 0, 0.1);
+        /* width: calc(100% / 5); */
+        border-radius: 10px;
+      }
+
+      .swiper-pagination-bullet-active {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Swiper -->
+    <div class="scrollbar-custom">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide">Slide 4</div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var btnLength = $(".swiper-slide").length;
+      var scrollswiper = new Swiper(".scrollbar-custom .swiper-container", {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+        loop: true,
+        loopedSlides: 3,
+        pagination: {
+          el: ".scrollbar-custom .swiper-pagination",
+          clickable: true,
+          renderBullet: function (index, className) {
+            return (
+              '<button type="button" style="width : calc(100% / ' +
+              btnLength +
+              ')" class="' +
+              className +
+              '"><span class="blind">' +
+              (index + 1) +
+              "번째 슬라이드 보기</span></button>"
+            );
+          },
+        },
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아코디언 - 이미지 같이 바꾸기</title>
+    <script src="./js/jquery-1.11.2.min.js"></script>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <style>
+    /* 아코디언 */
+    #accodion_withimg {
+      width: 1000px;
+      height: 500px;
+    }
+    #accodion_withimg > div {
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+    }
+
+    .accordion a {
+      display: block;
+      border: 1px solid #eee;
+      border-radius: 3px;
+      padding: 10px 5px 10px 15px;
+      margin-bottom: 10px;
+    }
+    .accordion a:after{
+      content: '>';
+      float: right;
+      margin: 0 10px 0 0;
+      font-weight: 500;
+      transition: 0.3s;
+      
+    }
+    .accordion a:hover{
+      background-color: darkblue;
+      color: #fff;
+    }
+    .accordion a.active{
+      display: block;
+      color: #fff;
+      background-color: darkblue;
+    }
+    .accordion a:hover::after{
+      color: antiquewhite;
+    }
+    .accordion a.active:after{
+      transform: rotate(90deg);
+      color: antiquewhite;
+    }
+    .accordion .text{
+      padding: 5px 10px 5px 20px;
+      display: none;
+    }
+
+    .accordion .text.active{
+      display: block;
+    }
+
+    #accordion_toggle{
+      width: 1000px;
+    }
+
+    .accordion-item{
+      margin-bottom: 20px;
+    }
+
+    .accordion-item .content{
+      padding: 15px;
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div id="accodion_withimg">
+        <div class="accordion">
+          <a href="javascript:;" class="title active" data-img="./images/app-capture-01.png">제목1</a>
+          <div class="text active">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ut
+            reprehenderit animi deleniti corporis tempora eos praesentium minus.
+            Reiciendis totam quis voluptatum reprehenderit repudiandae animi
+            numquam nihil dolore omnis aliquid?
+          </div>
+          <a href="javascript:;" class="title" data-img="./images/app-capture-02.png">제목2</a>
+          <div class="text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, culpa
+            accusamus vel cupiditate veritatis totam! Sunt ipsa eveniet ipsum
+            eaque ex, optio quae est? Recusandae velit deleniti rerum quidem
+            molestias!
+          </div>
+          <a href="javascript:;" class="title" data-img="./images/app-capture-03.png">제목3</a>
+          <div class="text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quia
+              dolorem velit, corrupti rem autem, aut deleniti perspiciatis odio
+              natus sed necessitatibus blanditiis ipsam eligendi vel? Ad modi quis
+              labore.
+          </div>
+          <a href="javascript:;" class="title" data-img="./images/app-capture-04.png">제목4</a>
+          <div class="text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur dolorem unde dolor consequuntur delectus illo atque esse totam officiis libero! Ex placeat incidunt atque vel temporibus eos accusamus, explicabo earum!
+          </div>
+        </div>
+        <div class="images">
+          <img src="./images/app-capture-01.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <script>
+      $('.title').click(function(){
+        $(this).addClass('active')
+        $(this).siblings('.title').removeClass('active')
+
+        $(this).siblings('.text').stop().slideUp()
+        $(this).next().stop().slideDown()
+
+        var dataImg = $(this).attr('data-img')
+        $('.images img').attr('src', dataImg).hide().fadeIn()
+        
+      })
+    </script>
+  </body>
+</html>

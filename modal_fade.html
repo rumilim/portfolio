@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모달 - 페이드</title>
+    <script src="./js/jquery-1.11.2.min.js"></script>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <style>
+    /* 모달 */
+    .modal {
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.4);
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      display: none;
+    }
+
+    .modal.active {
+      display: block;
+    }
+
+    .modal_cont {
+      background-color: #fff;
+      border-radius: 10px;
+      width: 300px;
+      height: 500px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      animation: slidefade 0.3s linear;
+    }
+
+    .modal_open {
+      border: 2px solid #222;
+      border-radius: 3px;
+      margin: 5px;
+    }
+
+    .btn_close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+
+    @keyframes slidefade {
+      0% {
+        opacity: 0;
+        margin-top: -50px;
+      }
+
+      100% {
+        opacity: 1;
+        margin-top: 0;
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <a href="#none" class="modal_open 01">open modal fade</a>
+      <a href="#none" class="modal_open 02">open modal animation</a>
+      <a href="#none" class="modal_open 03" onclick="openModal()">open modal java</a>
+      <div class="modal 01">
+        <div class="modal_cont" tabindex="0">
+          <button type="button" class="btn_close">닫기</button>
+          <h2>모달을 열었어요!!</h2>
+        </div>
+      </div>
+      <!-- <div class="modal 02">
+        <div class="modal_cont">
+          <button type="button" class="btn_close">닫기</button>
+          <h2>모달을 열었어요!!</h2>
+        </div>
+      </div>
+      <div class="modal 03" id="modal_03">
+        <div class="modal_cont">
+          <button type="button" class="btn_close" onclick="closeModal()">닫기</button>
+          <h2>모달을 열었어요!!</h2>
+        </div>
+      </div>
+    </div> -->
+    <script>
+      // 페이드 효과
+      $(".modal_open.01").click(function () {
+        $(".modal.01").fadeIn();
+      });
+
+      $(".btn_close").click(function () {
+        $(".modal.01").fadeOut();
+      });
+
+      // 클래스추가 하여 애니메이션
+      // $(".modal_open.02").click(function () {
+      //   $(".modal.02").addClass("active");
+      // });
+
+      // $(".btn_close").click(function () {
+      //   $(".modal.02").removeClass("active");
+      // });
+
+      // 자바스크립트
+      // let modal = document.getElementById('modal_03')
+      // function openModal() {
+      //   modal.classList.add("active");
+      // }
+
+      // function closeModal() {
+      //   modal.classList.remove("active");
+      // }
+    </script>
+  </body>
+</html>

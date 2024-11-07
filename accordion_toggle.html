@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아코디언 - 토글</title>
+    <script src="./js/jquery-1.11.2.min.js"></script>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <style>
+    /* 아코디언 */
+    #accodion_withimg {
+      width: 1000px;
+      height: 500px;
+    }
+    #accodion_withimg > div {
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+    }
+
+    .accordion a {
+      display: block;
+      border: 1px solid #eee;
+      border-radius: 3px;
+      padding: 10px 5px 10px 15px;
+      margin-bottom: 10px;
+    }
+    .accordion a:after{
+      content: '>';
+      float: right;
+      margin: 0 10px 0 0;
+      font-weight: 500;
+      transition: 0.3s;
+      
+    }
+    .accordion a:hover{
+      background-color: darkblue;
+      color: #fff;
+    }
+    .accordion a.active{
+      display: block;
+      color: #fff;
+      background-color: darkblue;
+    }
+    .accordion a:hover::after{
+      color: antiquewhite;
+    }
+    .accordion a.active:after{
+      transform: rotate(90deg);
+      color: antiquewhite;
+    }
+    .accordion .text{
+      padding: 5px 10px 5px 20px;
+      display: none;
+    }
+
+    .accordion .text.active{
+      display: block;
+    }
+
+    #accordion_toggle{
+      width: 1000px;
+    }
+
+    .accordion-item{
+      margin-bottom: 20px;
+    }
+
+    .accordion-item .content{
+      padding: 15px;
+      display: none;
+    }
+  </style>
+  <body>
+    
+    <div class="container">
+      <div class="accordion" id="accordion_toggle">
+        <div class="accordion-item">
+          <a href="#none" class="title">질문1</a>
+          <div class="content">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae enim
+            sapiente qui, culpa repellat quo. Repellendus laudantium
+            reprehenderit libero quidem voluptates. Minima aliquam adipisci
+            laudantium aspernatur exercitationem ad, laboriosam debitis.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <a href="#none" class="title">질문2</a>
+          <div class="content">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem labore
+            fuga placeat consequatur, harum provident deleniti? Ab aspernatur
+            rem asperiores nesciunt, fuga aperiam provident ut optio iure
+            numquam consequatur hic.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <a href="#none" class="title">질문3</a>
+          <div class="content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
+            quaerat nihil? Est laborum expedita odit omnis quam commodi
+            asperiores? Corporis, dolor quaerat tempora id tempore reprehenderit
+            ullam ducimus architecto nobis!
+          </div>
+        </div>
+        <div class="accordion-item">
+          <a href="#none" class="title">질문4</a>
+          <div class="content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab omnis
+            eligendi vero iste, excepturi itaque eaque sunt molestiae illo
+            similique tenetur? Reiciendis repellat eligendi deserunt dolores,
+            non facere delectus tenetur.
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        $(".accordion-item .content").eq(0).show();
+        $(".accordion-item .title").click(function () {
+          $(this).siblings(".content").stop().slideToggle(300);
+          $(this).toggleClass("active");
+        });
+        $(".accordion-item .content").click(function () {
+          $(this).stop().slideUp();
+        });
+      });
+    </script>
+  </body>
+</html>
